@@ -10,9 +10,6 @@ chatbot = ChatBot("Capsulin", read_only=True)
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train("chatterbot.corpus.spanish")
 
-
-
-
 # Función para consultar SQLite
 def consultar_por_componente(componente):
     conn = sqlite3.connect("medicamentos.db")
