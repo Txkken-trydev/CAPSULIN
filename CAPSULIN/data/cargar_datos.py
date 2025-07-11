@@ -14,15 +14,15 @@ CREATE TABLE IF NOT EXISTS medicamentos (
 ''')
 
 medicamentos = [
-    ("Dolo-Ibu", "ibuprofeno", "dolor muscular", "tableta"),
-    ("Tempra", "paracetamol", "fiebre", "jarabe"),
-    ("Panadol", "paracetamol", "dolor leve", "tableta"),
-    ("Ibupirac", "ibuprofeno", "inflamación", "cápsula"),
+    ("Dolo-Ibu", "ibuprofeno", "dolor muscular", "tableta", ""),
+    ("Tempra", "paracetamol", "fiebre", "jarabe", ""),
+    ("Panadol", "paracetamol", "dolor leve", "tableta", ""),
+    ("Ibupirac", "ibuprofeno", "inflamación", "cápsula", ""),
 ]
 
 cursor.executemany('''
-INSERT INTO medicamentos (nombre, componentes, uso, presentacion)
-VALUES (?, ?, ?, ?)
+INSERT INTO medicamentos (nombre, componentes, uso, presentacion, categoria)
+VALUES (?, ?, ?, ?, ?)
 ''', medicamentos)
 
 conexion.commit()
