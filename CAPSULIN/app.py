@@ -17,11 +17,11 @@ logic_adapters=[
             "maximum_similarity_threshold": 0.80
         }
     ]
-# Función para consultar SQLite
-def consultar_por_componente(componente):
+# Función para consultar DB
+def consultar_por_medicamento(medicamentos):
     conn = sqlite3.connect("medicamentos.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT nombre FROM medicamentos WHERE componentes LIKE ?", ('%' + componente + '%',))
+    cursor.execute("SELECT nombre FROM medicamentos WHERE componentes LIKE ?", ('%' + '%',))
     resultados = cursor.fetchall()
     conn.close()
     return [r[0] for r in resultados]
@@ -36,11 +36,11 @@ def chat():
 
     if "contienen" in user_input or "componentes" in user_input:
         palabras = user_input.split()
-        posible_componente = palabras[-1]
-        resultados = consultar_por_componente(posible_componente)
+        posible_medicamento = palabras[-1]
+        resultados = consultar_por_medicamento(posible_medicamento)
 
         if resultados:
-            respuesta = f"Los medicamentos que contienen {posible_componente} son: {', '.join(resultados)}."
+            respuesta = f"Los medicamentos que contienen {posible_medicamento} son: {', '.join(resultados)}."
         else:
             respuesta = "No encontré medicamentos con ese componente."
     else:
