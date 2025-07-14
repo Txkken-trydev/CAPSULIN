@@ -1,0 +1,19 @@
+import sqlite3
+
+conn = sqlite3.connect("medicamentos.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+DELETE FROM medicamentos
+WHERE
+    nombre IS NULL OR nombre = '' OR
+    componente IS NULL OR componente = '' OR
+    uso IS NULL OR uso = '' OR
+    presentacion IS NULL OR presentacion = '' OR
+    categoria IS NULL OR categoria = '' OR
+    sintomas IS NULL OR sintomas = ''
+""")
+
+conn.commit()
+conn.close()
+print("✅ Filas con celdas vacías eliminadas.")
